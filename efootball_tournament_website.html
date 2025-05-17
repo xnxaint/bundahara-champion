@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnamen eFootball Mobile Championship 2025</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1e88e5;
+            --accent: #ff6d00;
+            --light: #f5f5f5;
+            --dark: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            background: url('/api/placeholder/1200/500') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: url('/api/placeholder/400/200') center/cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline {
+            margin: 2rem 0 4rem;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--secondary);
+            padding-bottom: 1rem;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: -12px;
+            top: 0;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .timeline-content {
+            margin-top: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0a3d8f;
+        }
+        
+        .sponsors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .sponsor {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 180px;
+            height: 100px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #bbb;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">eFootball Championship</div>
+        <p>Turnamen eFootball Mobile Terbesar di Indonesia</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#jadwal">Jadwal</a></li>
+            <li><a href="#hadiah">Hadiah</a></li>
+            <li><a href="#peraturan">Peraturan</a></li>
+            <li><a href="#daftar">Daftar</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="beranda" class="hero">
+            <div class="hero-content">
+                <h1>eFootball Mobile Championship 2025</h1>
+                <p>Tunjukkan kemampuan terbaikmu dan rebut hadiah jutaan rupiah!</p>
+                <a href="#daftar" class="btn">Daftar Sekarang</a>
+            </div>
+        </section>
+        
+        <section id="info">
+            <h2 class="section-title">Informasi Turnamen</h2>
+            <div class="info-cards">
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3>Format Turnamen</h3>
+                        <p>Turnamen akan dibagi dalam babak penyisihan grup dan babak knockout. Setiap grup terdiri dari 4 tim dan 2 tim teratas akan melaju ke babak selanjutnya.</p>
+                        <a href="#peraturan" class="btn">Pelajari Lebih Lanjut</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3>Hadiah Menarik</h3>
+                        <p>Total hadiah mencapai Rp 50.000.000 dengan berbagai kategori pemenang termasuk Juara, Runner-up, dan pemain terbaik turnamen.</p>
+                        <a href="#hadiah" class="btn">Lihat Hadiah</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3>Disiarkan Langsung</h3>
+                        <p>Semua pertandingan akan disiarkan langsung melalui channel YouTube dan platform streaming resmi kami dengan komentator profesional.</p>
+                        <a href="#" class="btn">Channel Streaming</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="jadwal">
+            <h2 class="section-title">Jadwal Turnamen</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">15 Juni</span>
+                    <div class="timeline-content">
+                        <h3>Pendaftaran Dibuka</h3>
+                        <p>Pendaftaran untuk turnamen eFootball Mobile Championship 2025 resmi dibuka. Kuota terbatas hanya untuk 64 peserta!</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">25 Juni</span>
+                    <div class="timeline-content">
+                        <h3>Pendaftaran Ditutup</h3>
+                        <p>Batas akhir pendaftaran dan pembayaran biaya registrasi untuk mengikuti turnamen.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">28 Juni</span>
+                    <div class="timeline-content">
+                        <h3>Technical Meeting</h3>
+                        <p>Penjelasan detail peraturan, sistem pertandingan, dan pengundian grup akan dilakukan secara online via Zoom.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">1-5 Juli</span>
+                    <div class="timeline-content">
+                        <h3>Babak Penyisihan</h3>
+                        <p>Pertandingan babak grup dengan format round robin (masing-masing tim bertemu satu sama lain).</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">8-10 Juli</span>
+                    <div class="timeline-content">
+                        <h3>Babak 16 Besar & Perempat Final</h3>
+                        <p>Babak knockout dengan format best of three untuk menentukan 4 tim terbaik.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">15 Juli</span>
+                    <div class="timeline-content">
+                        <h3>Semifinal & Final</h3>
+                        <p>Puncak pertandingan turnamen untuk menentukan juara. Disiarkan langsung dengan komentator profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="hadiah">
+            <h2 class="section-title">Hadiah Turnamen</h2>
+            <div class="info-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Juara 1</h3>
+                        <p>Rp 25.000.000</p>
+                        <p>Trofi Juara</p>
+                        <p>Merchandise Eksklusif</p>
+                        <p>Tiket Gratis Turnamen Selanjutnya</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Juara 2</h3>
+                        <p>Rp 15.000.000</p>
+                        <p>Trofi Runner-up</p>
+                        <p>Merchandise Eksklusif</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Juara 3</h3>
+                        <p>Rp 5.000.000</p>
+                        <p>Medali</p>
+                        <p>Merchandise</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Pemain Terbaik</h3>
+                        <p>Rp 3.000.000</p>
+                        <p>Trofi MVP</p>
+                        <p>Merchandise Eksklusif</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Top Scorer</h3>
+                        <p>Rp 2.000.000</p>
+                        <p>Trofi Top Scorer</p>
+                        <p>Merchandise</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="peraturan">
+            <h2 class="section-title">Peraturan Turnamen</h2>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Peraturan Umum</h3>
+                    <p>1. Turnamen menggunakan game eFootball Mobile versi terbaru.</p>
+                    <p>2. Peserta wajib memiliki akun eFootball Mobile yang sudah terdaftar minimal 30 hari.</p>
+                    <p>3. Peserta harus berusia minimal 16 tahun.</p>
+                    <p>4. Setiap peserta hanya boleh mendaftarkan 1 akun.</p>
+                    <p>5. Biaya pendaftaran sebesar Rp 50.000 per peserta.</p>
+                    <br>
+                    <h3>Format Pertandingan</h3>
+                    <p>1. Babak penyisihan: format grup (round robin)</p>
+                    <p>2. Babak 16 besar hingga final: format knockout (best of three)</p>
+                    <p>3. Durasi pertandingan: 5 menit per babak</p>
+                    <p>4. Diperbolehkan menggunakan tim apa saja yang tersedia di game</p>
+                    <p>5. Pengaturan pertandingan akan ditentukan dalam technical meeting</p>
+                    <br>
+                    <h3>Sanksi</h3>
+                    <p>1. Keterlambatan lebih dari 15 menit akan dinyatakan kalah WO</p>
+                    <p>2. Penggunaan cheat/hack akan didiskualifikasi</p>
+                    <p>3. Perilaku tidak sportif akan dikenakan sanksi sesuai keputusan panitia</p>
+                    <br>
+                    <p>*Peraturan lengkap akan diberikan saat technical meeting</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="daftar">
+            <h2 class="section-title">Pendaftaran</h2>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor HP (WhatsApp)</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username eFootball Mobile</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id">ID eFootball Mobile</label>
+                    <input type="text" id="id" name="id" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Tanggal Lahir</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Pengalaman Bermain eFootball</label>
+                    <select id="experience" name="experience" required>
+                        <option value="">Pilih Pengalaman</option>
+                        <option value="beginner">Pemula (< 1 tahun)</option>
+                        <option value="intermediate">Menengah (1-2 tahun)</option>
+                        <option value="advanced">Mahir (2-3 tahun)</option>
+                        <option value="expert">Profesional (> 3 tahun)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="payment">Bukti Pembayaran</label>
+                    <p>Silakan transfer biaya pendaftaran Rp 50.000 ke rekening berikut:</p>
+                    <p>Bank BCA: 1234567890 a.n. Panitia eFootball Championship</p>
+                    <p>Lalu unggah bukti pembayaran (format jpg/png)</p>
+                    <input type="file" id="payment" name="payment" accept="image/*" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Pesan Tambahan (opsional)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit">Kirim Pendaftaran</button>
+                </div>
+            </form>
+        </section>
+        
+        <section id="sponsors">
+            <h2 class="section-title">Sponsor & Partner</h2>
+            <div class="sponsors">
+                <div class="sponsor">Sponsor 1</div>
+                <div class="sponsor">Sponsor 2</div>
+                <div class="sponsor">Sponsor 3</div>
+                <div class="sponsor">Sponsor 4</div>
+                <div class="sponsor">Sponsor 5</div>
+                <div class="sponsor">Sponsor 6</div>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="kontak">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Kami</h3>
+                <p>eFootball Championship adalah turnamen eFootball Mobile terbesar di Indonesia yang diselenggarakan untuk mencari talenta terbaik dalam dunia game sepak bola.</p>
+                <div class="social-links">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Link Penting</h3>
+                <ul class="footer-links">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#jadwal">Jadwal</a></li>
+                    <li><a href="#hadiah">Hadiah</a></li>
+                    <li><a href="#peraturan">Peraturan</a></li>
+                    <li><a href="#daftar">Daftar</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak Kami</h3>
+                <div class="contact-item">
+                    <p>Email: info@efootballchampionship.id</p>
+                </div>
+                <div class="contact-item">
+                    <p>Phone: +62 812 3456 7890</p>
+                </div>
+                <div class="contact-item">
+                    <p>WhatsApp: +62 812 3456 7890</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 eFootball Championship. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih telah mendaftar! Kami akan memproses pendaftaran Anda dan menghubungi melalui WhatsApp atau email yang terdaftar.');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
